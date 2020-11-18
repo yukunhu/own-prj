@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0d0b4e"],{"68b8":function(n,e,t){"use strict";t.r(e);var r=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("router-view")},u=[],o=(t("5a89"),{name:"ppt-index",data:function(){return{routerName:["gcinbrowser"]}},mounted:function(){}}),a=o,c=t("2877"),i=Object(c["a"])(a,r,u,!1,null,null,null);e["default"]=i.exports}}]);
+//# sourceMappingURL=chunk-2d0d0b4e.605f3dc0.js.map
