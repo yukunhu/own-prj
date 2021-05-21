@@ -17,7 +17,7 @@ export default {
       scene: null,
       camera: null,
       renderer: null,
-      routerName: ['test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'materialtTest1', 'shadowTest1', 'groupTest1']
+      routerName: ['topology', 'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'materialtTest1', 'shadowTest1', 'groupTest1', 'hilbert2D']
     }
   },
   mounted () {

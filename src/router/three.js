@@ -7,6 +7,8 @@ import test6 from '../views/three/test6'
 import materialtTest1 from '../views/three/material-test1'
 import shadowTest1 from '../views/three/shadow-test1'
 import groupTest1 from '../views/three/group-test1'
+import hilbert2D from '../views/three/hilbert2D'
+import topology from '../views/three/topology'
 export default [
   {
     path: 'test1',
@@ -52,5 +54,15 @@ export default [
     path: 'groupTest1',
     name: 'groupTest1',
     component: groupTest1
+  },
+  {
+    path: 'hilbert2D',
+    name: 'hilbert2D',
+    component: hilbert2D
+  },
+  {
+    path: 'topology',
+    name: 'topology',
+    component: topology
   }
 ]

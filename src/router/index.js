@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import three from './three'
 import ppt from './ppt'
 import glsl from '../views/glsl/index'
+import chart3d from '../views/chart3d/topology3d'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [
     path: '/glsl',
     name: 'glsl',
     component: glsl
+  },
+  {
+    path: '/chart3d',
+    name: 'chart3d',
+    component: chart3d
   }
 ]
 

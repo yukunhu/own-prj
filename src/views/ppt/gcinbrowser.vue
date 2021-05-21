@@ -1,5 +1,5 @@
 <template>
-    <div class="container" @mousewheel="changePage">
+    <div class="container" @keydown="changePage">
         <div class="page page1" v-if="pageIndex == 1">
             <h1 class="title">浏览器中的计算机图形学初探</h1>
         </div>
@@ -56,7 +56,7 @@
                 <br v-if="itemIndex === 3"/>
                 <span v-if="itemIndex === 3">APPLE metal</span>
             </p>
-            <div v-if="itemIndex === 4" style="text-align: center">GC + BROSWER = WebGL/WebGPU</div>
+            <div v-if="itemIndex === 4" style="text-align: center">CG + BROSWER = WebGL/WebGPU</div>
             <p :style="{backgroundImage: `url(${page4[itemIndex].url})`}" v-if="itemIndex === 4"></p>
         </div>
         <div class="page page5" v-if="pageIndex == 5">
@@ -67,12 +67,13 @@
             <comMoon  v-if="itemIndex ===1" style="margin: 0 auto; width: 1200px"/>
             <comBugua v-if="itemIndex ===3" style="margin: 0 auto; width: 1200px"/>
             <div v-if="itemIndex >3" style="width:1400px; height: 600px; margin: 0 auto">
-                <iframe src="https://bruno-simon.com/" frameborder="0" v-if="itemIndex ===4" width='1400' height="600"></iframe>
-                <iframe src="https://go.pioneer.com/cornrevolution" frameborder="0" v-if="itemIndex ===5" width='1400' height="600"></iframe>
-                <iframe src="http://oatthegoat.co.nz/" frameborder="0" v-if="itemIndex ===6" width='1400' height="600"></iframe>
-                <iframe src="http://vr.ff.com/us/" frameborder="0" v-if="itemIndex ===7" width='1400' height="600"></iframe>
-                <iframe src="https://www.nationalgeographic.com/science/2016/11/exploring-mars-map-panorama-pictures/" frameborder="0" v-if="itemIndex ===8" width='1400' height="600"></iframe>
-                <iframe src="https://phoboslab.org/wipeout/" frameborder="0" v-if="itemIndex ===9" width='1400' height="600"></iframe>
+                <iframe src="https://threejs.org/examples/css3d_periodictable.html" frameborder="0" v-if="itemIndex ===4" width='1400' height="600"></iframe>
+                <iframe src="https://bruno-simon.com/" frameborder="0" v-if="itemIndex ===5" width='1400' height="600"></iframe>
+                <iframe src="https://go.pioneer.com/cornrevolution" frameborder="0" v-if="itemIndex ===6" width='1400' height="600"></iframe>
+                <iframe src="http://oatthegoat.co.nz/" frameborder="0" v-if="itemIndex ===7" width='1400' height="600"></iframe>
+                <iframe src="http://vr.ff.com/us/" frameborder="0" v-if="itemIndex ===8" width='1400' height="600"></iframe>
+                <iframe src="https://eyes.nasa.gov/apps/mars2020/#/home" frameborder="0" v-if="itemIndex ===9" width='1400' height="600"></iframe>
+                <iframe src="https://phoboslab.org/wipeout/" frameborder="0" v-if="itemIndex ===10" width='1400' height="600"></iframe>
             </div>
 
         </div>
@@ -140,11 +141,12 @@ export default {
         { text: '月有阴晴圆缺' },
         { text: '八卦', url: p5image2 },
         { text: '八卦与二进制', url: p5image2 },
+        { text: '三维词云' },
         { text: '一份简历' },
         { text: '卖玉米的' },
         { text: '童话故事' },
         { text: '贾跃亭造车' },
-        { text: '火星演化' },
+        { text: '登陆火星' },
         { text: '赛车游戏' }
       ],
       itemIndex: 0
@@ -154,10 +156,14 @@ export default {
     comMoon,
     comBugua
   },
-  methods: {
-    changePage (e) {
-      const scrollDistance = e.deltaY
-      const scrollDirection = scrollDistance / Math.abs(scrollDistance)
+  mounted () {
+    document.onkeydown = (e) => {
+      const keyCode = e.keyCode
+      if (keyCode !== 40 && keyCode !== 38) return
+      let scrollDirection = 1
+      if (keyCode === 38) {
+        scrollDirection = -1
+      }
       let itemArr = this[`page${this.pageIndex}`]
       this.itemIndex += scrollDirection
       if (itemArr && itemArr[this.itemIndex]) {
@@ -168,6 +174,23 @@ export default {
       itemArr = this[`page${this.pageIndex}`]
       if (itemArr && scrollDirection < 0) this.itemIndex = itemArr.length - 1
       if (itemArr && scrollDirection > 0) this.itemIndex = 0
+    }
+  },
+  methods: {
+    changePage (e) {
+      console.log(e)
+    //   const scrollDistance = e.deltaY
+    //   const scrollDirection = scrollDistance / Math.abs(scrollDistance)
+    //   let itemArr = this[`page${this.pageIndex}`]
+    //   this.itemIndex += scrollDirection
+    //   if (itemArr && itemArr[this.itemIndex]) {
+    //     return
+    //   }
+    //   if ((this.pageIndex === this.pageMin && scrollDirection < 0) || (this.pageIndex === this.pageMax && scrollDirection > 0)) return
+    //   this.pageIndex += scrollDirection
+    //   itemArr = this[`page${this.pageIndex}`]
+    //   if (itemArr && scrollDirection < 0) this.itemIndex = itemArr.length - 1
+    //   if (itemArr && scrollDirection > 0) this.itemIndex = 0
     }
   }
 }
